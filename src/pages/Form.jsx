@@ -1,4 +1,6 @@
 import React from "react";
+import { toast } from "react-toastify";
+
 import GetDate from "../components/GetDate";
 import { useEffect } from "react";
 import useGeo from "../hooks/useGeo";
@@ -9,7 +11,6 @@ import useCity from "../hooks/useCity";
 import { useNavigate } from "react-router-dom";
 
 const dateISOstrinformat = (d) => {
-  console.log(d);
   const date = new Date(d);
   const isoString = date.toISOString();
   return isoString;
@@ -55,6 +56,7 @@ const Form = () => {
     const postCites = () => {
       handleData(data);
     };
+    toast.success(`Let's go ${city} `);
     if (city) {
       handleSelected(city);
       handleGeo({ lat: location.latitude, lng: location.longitude });

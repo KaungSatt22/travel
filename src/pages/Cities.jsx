@@ -1,6 +1,7 @@
 import React from "react";
-import useCity from "../hooks/useCity";
+import { toast } from "react-toastify";
 
+import useCity from "../hooks/useCity";
 const Cities = () => {
   const { data, handleGeo, selected, handleSelected, handleDeletebyId } =
     useCity();
@@ -14,6 +15,13 @@ const Cities = () => {
   const onClickHandler = (city) => {
     handleGeo(city.position);
     handleSelected(city.cityName);
+  };
+  const deleteHandler = (city) => {
+    handleDeletebyId(city.id);
+    if (city.cityName === selected) {
+      handleSelected(data.filter((item) => item.id !== city.id)[0]?.cityName);
+    }
+    toast.error("Removed");
   };
 
   return (
@@ -30,7 +38,7 @@ const Cities = () => {
             <p>{city.cityName}</p>
             <p>{datFormat(city.date)}</p>
           </div>
-          <p className="text-sm" onClick={() => handleDeletebyId(city.id)}>
+          <p className="text-sm" onClick={() => deleteHandler(city)}>
             ❌
           </p>
         </div>

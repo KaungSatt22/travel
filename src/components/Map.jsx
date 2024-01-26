@@ -31,7 +31,7 @@ const Map = () => {
             position={[city.position.lat, city.position.lng]}
             key={city.id}
           >
-            <Popup>{city.notes}</Popup>
+            <Popup>{city.notes ? city.notes : "No Note Found"}</Popup>
           </Marker>
         ))}
         <ChangeCenter pos={[geo.lat, geo.lng]} />

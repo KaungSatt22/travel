@@ -1,4 +1,7 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import AppLayout from "./pages/AppLayout";
 import Cities from "./pages/Cities";
 import Country from "./pages/Country";
@@ -37,11 +40,26 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <CityContextProvider>
-      <GeoContextProvider>
-        <RouterProvider router={router} />
-      </GeoContextProvider>
-    </CityContextProvider>
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce
+      />
+      <CityContextProvider>
+        <GeoContextProvider>
+          <RouterProvider router={router} />
+        </GeoContextProvider>
+      </CityContextProvider>
+    </>
   );
 };
 
