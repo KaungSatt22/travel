@@ -1,17 +1,15 @@
 import React from "react";
 import { toast } from "react-toastify";
+import { format } from "date-fns";
 
 import useCity from "../hooks/useCity";
 const Cities = () => {
   const { data, handleGeo, selected, handleSelected, handleDeletebyId } =
     useCity();
   let datFormat = (d) => {
-    const isoDate = d;
-    const date = new Date(isoDate);
-    const options = { month: "long", day: "numeric", year: "numeric" };
-    const formattedDate = date.toLocaleDateString("en-US", options);
-    return formattedDate;
+    return format(d, "MMMM dd,yyyy");
   };
+
   const onClickHandler = (city) => {
     handleGeo(city.position);
     handleSelected(city.cityName);
@@ -23,7 +21,13 @@ const Cities = () => {
     }
     toast.error("Removed");
   };
-
+  if (data?.length === 0) {
+    return (
+      <p className="mt-20 text-center p-3 bg-red-300 max-w-lg mx-auto text-white rounded-lg text-xl">
+        Click To Map And Add Some Place 🚀
+      </p>
+    );
+  }
   return (
     <div>
       {data.map((city) => (

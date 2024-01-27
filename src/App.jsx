@@ -5,13 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import AppLayout from "./pages/AppLayout";
 import Cities from "./pages/Cities";
 import Country from "./pages/Country";
-import Form from "./pages/Form";
+
 import { Navigate } from "react-router-dom";
 import { CityContextProvider } from "./contexts/CityContext/CityContext";
 import { GeoContextProvider } from "./contexts/CityContext/GeoContext";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
+import AddCity from "./pages/AddCitiy";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/form",
-        element: <Form />,
+        element: <AddCity />,
       },
     ],
   },

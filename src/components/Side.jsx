@@ -5,7 +5,7 @@ import AppNav from "./AppNav";
 
 const Side = () => {
   return (
-    <div className="w-[50%] bg-[#F9F3CC] h-full overflow-y-scroll scroll-smooth no-scrollbar">
+    <div className="w-[50%] bg-[#F9F3CC] overflow-y-scroll scroll-smooth no-scrollbar">
       <Logo />
       <AppNav />
       <Outlet />
